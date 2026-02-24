@@ -2,5 +2,3 @@ flask
 ask-sdk-core
 ask-sdk-flask-ask
 python-dotenv
-
-pip install -r requirements.txt
