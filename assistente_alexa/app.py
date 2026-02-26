@@ -14,8 +14,14 @@ class LaunchHandler(AbstractRequestHandler):
         return is_request_type("LaunchRequest")(handler_input)
 
     def handle(self, handler_input):
+        print("LAUNCH HANDLER CHAMADO!")
         fala = "Assistente ativado. O que você quer fazer?"
-        return handler_input.response_builder.speak(fala).response
+        return (
+            handler_input.response_builder
+            .speak(fala)
+            .ask(fala)
+            .response
+        )
 
 
 class ComandoHandler(AbstractRequestHandler):
@@ -25,12 +31,37 @@ class ComandoHandler(AbstractRequestHandler):
     def handle(self, handler_input):
         slots = handler_input.request_envelope.request.intent.slots
         comando = slots["comando"].value
+        print(f"SLOT RECEBIDO: '{comando}'")
         resposta = acoes.executar(comando)
-        return handler_input.response_builder.speak(resposta).response
+        return (
+            handler_input.response_builder
+            .speak(resposta)
+            .ask("O que mais você quer fazer?")
+            .response
+        )
+
+
+class FechарHandler(AbstractRequestHandler):
+    def can_handle(self, handler_input):
+        return (
+            is_intent_name("AMAZON.StopIntent")(handler_input) or
+            is_intent_name("AMAZON.CancelIntent")(handler_input)
+        )
+
+    def handle(self, handler_input):
+        print("FECHAR HANDLER CHAMADO!")
+        fala = "Assistente encerrado. Até mais!"
+        return (
+            handler_input.response_builder
+            .speak(fala)
+            .set_should_end_session(True)
+            .response
+        )
 
 
 sb.add_request_handler(LaunchHandler())
 sb.add_request_handler(ComandoHandler())
+sb.add_request_handler(FechарHandler())
 
 skill_adapter = SkillAdapter(
     skill=sb.create(),
@@ -40,8 +71,9 @@ skill_adapter = SkillAdapter(
 
 @app.route("/", methods=["POST"])
 def invoke_skill():
+    print("REQUISIÇÃO RECEBIDA!")
     return skill_adapter.dispatch_request()
 
 
 if __name__ == "__main__":
-    app.run(port=5000, debug=True)
+    app.run(port=5000, debug=False)
