@@ -16,10 +16,9 @@ def encontrar_em_possiveis(possiveis: list) -> str:
             return p
     return None
 
-# Dicionário de programas: palavra-chave → (nomes no PATH, caminhos possíveis)
 PROGRAMAS = {
     "chrome": (
-        ["chrome", "google-chrome", "chromium"],
+        ["chrome", "google-chrome", "chromium"],    
         [
             r"C:\Program Files\Google\Chrome\Application\chrome.exe",
             r"C:\Program Files (x86)\Google\Chrome\Application\chrome.exe",
@@ -54,7 +53,6 @@ PROGRAMAS = {
     "vscode": (["code"], []),
 }
 
-# Programas simples do Windows (já estão no PATH)
 PROGRAMAS_SIMPLES = {
     "bloco de notas": "notepad.exe",
     "calculadora": "calc.exe",
@@ -62,7 +60,6 @@ PROGRAMAS_SIMPLES = {
     "paint": "mspaint.exe",
 }
 
-# Sites
 SITES = {
     "youtube": "https://youtube.com",
     "google": "https://google.com",
@@ -78,7 +75,6 @@ def executar(comando: str) -> str:
     print(f"COMANDO RECEBIDO: '{comando}'")
     comando = comando.lower().strip()
 
-    # Programas complexos (com busca no PATH e caminhos possíveis)
     for chave, (nomes, possiveis) in PROGRAMAS.items():
         if chave in comando:
             caminho = encontrar_programa(nomes) or encontrar_em_possiveis(possiveis)
@@ -87,19 +83,16 @@ def executar(comando: str) -> str:
                 return f"Abrindo o {chave.capitalize()}"
             return f"{chave.capitalize()} não encontrado no seu PC"
 
-    # Programas simples
     for chave, exe in PROGRAMAS_SIMPLES.items():
         if chave in comando:
             subprocess.Popen(exe)
             return f"Abrindo o {chave.capitalize()}"
 
-    # Sites
     for chave, url in SITES.items():
         if chave in comando:
             webbrowser.open(url)
             return f"Abrindo o {chave.capitalize()}"
 
-    # Sistema
     if "desligar" in comando:
         os.system("shutdown /s /t 10")
         return "Desligando o computador em 10 segundos"
