@@ -1,10 +1,10 @@
-# 🤖 Assistente Pessoal com Alexa + Python
+# Assistente Pessoal com Alexa + Python
 
 Controle seu PC com a voz usando a Alexa como interface. Fale um comando, o Python executa no seu computador.
 
 ---
 
-## 📌 Como funciona
+## Como funciona
 
 ```
 Você fala → Alexa ouve → chama a Skill → servidor Python recebe → executa no PC
@@ -12,7 +12,7 @@ Você fala → Alexa ouve → chama a Skill → servidor Python recebe → execu
 
 ---
 
-## 🗂️ Estrutura do projeto
+## Estrutura do projeto
 
 ```
 assistente-alexa/
@@ -37,7 +37,7 @@ assistente-alexa/
 
 ---
 
-## 🚀 Instalação
+## Instalação
 
 **1. Clone o repositório**
 ```bash
@@ -64,7 +64,7 @@ ngrok config add-authtoken SEU_TOKEN_AQUI
 
 ---
 
-## ▶️ Como usar no dia a dia
+## Como usar no dia a dia
 
 Dê dois cliques no `iniciar.bat` — ele sobe o servidor Python e o ngrok automaticamente.
 
@@ -72,18 +72,18 @@ O domínio ngrok já está fixo (`sippingly-scalene-abrielle.ngrok-free.dev`), e
 
 ---
 
-## 🗣️ Comandos disponíveis
+##  Comandos disponíveis
 
 Após falar **"Alexa, abrir meu assistente"**, você pode dizer:
 
-### 🌐 Navegadores
+### Navegadores
 | Comando | Ação |
 |---|---|
 | "abrir chrome" | Abre o Google Chrome |
 | "abrir brave" | Abre o Brave |
 | "abrir firefox" | Abre o Firefox |
 
-### 💻 Programas
+### Programas
 | Comando | Ação |
 |---|---|
 | "abrir spotify" | Abre o Spotify |
@@ -95,7 +95,7 @@ Após falar **"Alexa, abrir meu assistente"**, você pode dizer:
 | "abrir word" | Abre o Word |
 | "abrir excel" | Abre o Excel |
 
-### 🔗 Sites
+### Sites
 | Comando | Ação |
 |---|---|
 | "abrir youtube" | Abre o YouTube |
@@ -107,21 +107,21 @@ Após falar **"Alexa, abrir meu assistente"**, você pode dizer:
 | "abrir github" | Abre o GitHub |
 | "abrir sigaa" | Abre o SIGAA |
 
-### 🖥️ Sistema
+###  Sistema
 | Comando | Ação |
 |---|---|
 | "desligar" | Desliga o PC em 10 segundos |
 | "reiniciar" | Reinicia o PC em 10 segundos |
 | "cancelar desligamento" | Cancela o desligamento |
 
-### 🔴 Encerrar
+###  Encerrar
 | Comando | Ação |
 |---|---|
 | "fechar" / "cancelar" / "parar" | Encerra o assistente |
 
 ---
 
-## ➕ Adicionando novos comandos
+##  Adicionando novos comandos
 
 Abra o `acoes.py` e adicione uma linha no dicionário correspondente:
 
