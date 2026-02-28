@@ -21,9 +21,6 @@ assistente-alexa/
 ├── acoes.py            # Todas as ações que o PC pode executar
 ├── iniciar.bat         # Sobe tudo automaticamente com 2 cliques
 ├── requirements.txt    # Dependências do projeto
-├── .env                # Seus contatos privados (não sobe pro GitHub)
-├── .env.example        # Modelo do .env para quem clonar
-└── .gitignore
 ```
 
 ---
